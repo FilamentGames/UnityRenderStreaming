@@ -185,15 +185,15 @@ export function registerGamepadEvents(videoPlayer) {
     data.setUint8(1, GamepadEventType.ButtonPressed);
     data.setUint8(2, e.index);
     data.setFloat64(3, e.value, true);
-    
+
     _videoPlayer && _videoPlayer.sendMsg(data.buffer);
   }
 
   function gamepadAxisChange(e) {
     console.log("gamepad id: " + e.id + " axis: " + e.index + " value " + e.value + " x:" + e.x + " y:" + e.y );
     let data = new DataView(new ArrayBuffer(27));
-    data.setUint8(0, InputEvent.Gamepad);  
-    data.setUint8(1, GamepadEventType.Axis);  
+    data.setUint8(0, InputEvent.Gamepad);
+    data.setUint8(1, GamepadEventType.Axis);
     data.setUint8(2, e.index);
     data.setFloat64(3, e.x, true);
     data.setFloat64(11, e.y, true);
@@ -344,11 +344,4 @@ export function registerMouseEvents(videoPlayer, playerElement) {
     data.setFloat32(5, e.deltaY, true);
     _videoPlayer && _videoPlayer.sendMsg(data.buffer);
   }
-}
-
-export function sendClickEvent(videoPlayer, elementId) {
-  let data = new DataView(new ArrayBuffer(3));
-  data.setUint8(0, InputEvent.ButtonClick);
-  data.setInt16(1, elementId, true);
-  videoPlayer && videoPlayer.sendMsg(data.buffer);
 }
