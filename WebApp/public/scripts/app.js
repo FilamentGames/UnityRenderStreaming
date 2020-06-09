@@ -39,13 +39,7 @@ function onClickPlayButton() {
   elementVideo.style.touchAction = 'none';
   playerDiv.appendChild(elementVideo);
 
-  // add video thumbnail
-  const elementVideoThumb = document.createElement('video');
-  elementVideoThumb.id = 'VideoThumbnail';
-  elementVideoThumb.style.touchAction = 'none';
-  playerDiv.appendChild(elementVideoThumb);
-
-  setupVideoPlayer([elementVideo, elementVideoThumb]).then(value => videoPlayer = value);
+  setupVideoPlayer([elementVideo]).then(value => videoPlayer = value);
 
   // add fullscreen button
   const elementFullscreenButton = document.createElement('img');
